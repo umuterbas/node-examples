@@ -1,0 +1,23 @@
+# POST http://localhost:3000/users
+# Content-Type: application/json
+
+# {
+#     "name":"Arthur",
+#     "country": "Brazil"
+# }
+
+# PUT http://localhost:3000/users
+# Content-Type: application/json
+
+# {
+#     "id":1,
+#     "name":"Tomoyuki",
+#     "country": "Japan"
+# }
+
+DELETE http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "id":4
+}

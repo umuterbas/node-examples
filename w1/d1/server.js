@@ -1,21 +1,42 @@
 const http = require("http");
 
-const users = [{ umut, vini, kento }];
+const users = [
+  { name: "Arthur", country: "Brazil" },
+  { name: "Nicolo", country: "Italy" },
+  { name: "Emir", country: "Turkey" },
+];
+
+const products = [
+  { name: "pen", price: 2.5 },
+  { name: "notebook", price: 4 },
+  { name: "backpack", price: 14.99 },
+];
 
 const server = http.createServer((request, response) => {
   console.log("A wild client appears!", request.url);
 
+  if (request.url === "/test") {
+    response.writeHead(200, { "Content-type": "text/html" });
+    response.write("<h1>Hello Client in test!!!!!!</h1>");
+  }
+
+  if (request.url === "/cats") {
+    response.writeHead(200, { "Content-type": "text/html" });
+    response.write("<img src=''>");
+  }
   if (request.url === "/dogs") {
     response.writeHead(200, { "Content-type": "text/html" });
     response.write(
-      "<img src='https://pbs.twimg.com/profile_images/1213144769452486656/sRfg9m1O_400x400.jpg' alt=''>"
+      "<img src='https://i.pinimg.com/originals/b9/7d/97/b97d976b20e9889918becf0f5f4e7cbd.jpg'>"
     );
   }
   if (request.url === "/users") {
     response.writeHead(200, { "Content-type": "application/json" });
-    response.write(
-      "<p></p>"
-    );
+    response.write(JSON.stringify({ users }));
+  }
+  if (request.url === "/products") {
+    response.writeHead(200, { "Content-type": "application/json" });
+    response.write(JSON.stringify({ products }));
   }
   response.end();
 });
